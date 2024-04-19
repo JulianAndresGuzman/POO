@@ -3,19 +3,22 @@
  * @author JulianAndresGuzmanCuellar 20232215518
  */
 package SolicitarRadioCirculo;
+
 import javax.swing.JOptionPane;
 
 public class AreaCirculo {
-    private static final double PI = 3.14159265359;
+    
+    int numero1;
+    double PI = 3.14159265359;
 
     public void pedirNumero() {
-        String entrada = JOptionPane.showInputDialog(null, "Introduce el radio del círculo:");
+        numero1 = Integer.parseInt(JOptionPane.showInputDialog("inserte un número"));
     }
-    int numero1 = Integer.parseInt(entrada);
-    
-    public void calcularRadio(){
-        double area = 2 * PI * numero1 * numero1;
-    
+
+    public void calcularRadio(int radio) {
+        double area = 2 * PI * radio * radio;
+        JOptionPane.showMessageDialog(null, "El área del círculo es: " + area);
+
     }
-    
+
 }
