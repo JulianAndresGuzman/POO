@@ -15,10 +15,6 @@ public class EjecutorCodigo {
         prd.definirResultado();
         prd.darResultado();
         
-        
-
-        
-
     }
     
 }
