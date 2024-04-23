@@ -10,7 +10,7 @@ public class CalculadoraMain {
      
      
     public static void main(String[] args) {
-        String nombre = JOptionPane.showInputDialog("inserte tu nombre porfavor");
+        String nombre = JOptionPane.showInputDialog(null,"inserte tu nombre porfavor", "xxxxx");
         int num1 = Integer.parseInt(JOptionPane.showInputDialog("hola "+nombre+" Inserte un número"));
         int num2 = Integer.parseInt(JOptionPane.showInputDialog("Inserte otro número"));
         
