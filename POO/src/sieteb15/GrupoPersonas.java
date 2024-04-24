@@ -15,6 +15,7 @@ public class GrupoPersonas {
         
     }
     public void agregarPersona(Persona persona) {
+        
         // Para Verificar si el grupo no está lleno
         if (cantidadPersonas < 100) {
             personas[cantidadPersonas] = persona;
@@ -23,4 +24,24 @@ public class GrupoPersonas {
             System.out.println("El grupo ya está completo");
         }
     }
+     public int numeroMujeres() {
+        int count = 0;
+        for (int i = 0; i < cantidadPersonas; i++) {
+            if (personas[i].isMujer()) {
+                count++;
+            }
+        }
+        return count;
+    }
+public int numeroHombresCasados() {
+        int count = 0;
+        for (int i = 0; i < cantidadPersonas; i++) {
+            if (!personas[i].isMujer() && personas[i].getEstadoCivil() == 'c') {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
 }
