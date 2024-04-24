@@ -57,7 +57,7 @@ public class Jugador {
         if (puntuacion - totalTirada >= 0) {
             puntuacion -= totalTirada;
         }
-
+        //Usaré system.out para no confundirme tanto esta vez
         System.out.println("Total de la tirada: " + totalTirada);
         System.out.println(nombre + " tiene " + puntuacion + " puntos restantes.");
     }
