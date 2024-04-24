@@ -1,27 +1,20 @@
 package sieteb15;
 
-/**
- *
- * @author JulianAndresGuzmanCuellar
- */
+import java.util.Random;
+
+// Clase que representa a un grupo de personas
 public class GrupoPersonas {
 
     private Persona[] personas; // Arreglo para almacenar las personas
     private int cantidadPersonas; // Contador para llevar la cantidad de personas en el grupo
 
-    /**
-     * Constructor de la clase. Inicializa el arreglo de personas y el contador en cero.
-     */
+    // Constructor de la clase
     public GrupoPersonas() {
         this.personas = new Persona[100];
         this.cantidadPersonas = 0;
     }
 
-    /**
-     * Método para agregar una persona al grupo.
-     *
-     * @param persona Persona a agregar.
-     */
+    // Método para agregar una persona al grupo
     public void agregarPersona(Persona persona) {
         // Para Verificar si el grupo no está lleno
         if (cantidadPersonas < 100) {
@@ -32,11 +25,7 @@ public class GrupoPersonas {
         }
     }
 
-    /**
-     * Método para calcular el número de mujeres en el grupo.
-     *
-     * @return Número de mujeres.
-     */
+    // Método para calcular el número de mujeres en el grupo
     public int numeroMujeres() {
         int count = 0;
         for (int i = 0; i < cantidadPersonas; i++) {
@@ -47,11 +36,7 @@ public class GrupoPersonas {
         return count;
     }
 
-    /**
-     * Método para calcular el número de hombres casados en el grupo.
-     *
-     * @return Número de hombres casados.
-     */
+    // Método para calcular el número de hombres casados en el grupo
     public int numeroHombresCasados() {
         int count = 0;
         for (int i = 0; i < cantidadPersonas; i++) {
@@ -62,11 +47,7 @@ public class GrupoPersonas {
         return count;
     }
 
-    /**
-     * Método para determinar si el sueldo medio de los hombres solteros es mayor que el de los casados.
-     *
-     * @return Verdadero si el sueldo medio de los solteros es mayor, falso en caso contrario.
-     */
+    // Método para determinar si el sueldo medio de los hombres solteros es mayor que el de los casados
     public boolean sueldoMedioHombresSolterosMayor() {
         int sumaSueldosSolteros = 0;
         int cantidadSolteros = 0;
@@ -94,15 +75,18 @@ public class GrupoPersonas {
         return sueldoMedioSolteros > sueldoMedioCasados;
     }
 
-    //metodo principal para "correr" el programa
+    // Método principal para correr" el programa
     public static void main(String[] args) {
         GrupoPersonas grupo = new GrupoPersonas();
 
-        // Ejemplo de uso: se agregan algunas personas al grupo
-        grupo.agregarPersona(new Persona('c', 50000, true)); // Casada, 50000, mujer
-        grupo.agregarPersona(new Persona('s', 60000, false)); // Soltera, 60000, hombre
-        grupo.agregarPersona(new Persona('c', 70000, false)); // Casado, 70000, hombre
-        grupo.agregarPersona(new Persona('v', 40000, true)); // Viuda, 40000, mujer
+        // Generar datos aleatorios para rellenar a las 100 personas
+        Random random = new Random();
+        for (int i = 0; i < 100; i++) {
+            char estadoCivil = random.nextBoolean() ? 'c' : (random.nextBoolean() ? 's' : 'v');
+            int sueldo = random.nextInt(100000 - 30000) + 30000; // Sueldo entre 30,000 y 100,000
+            boolean mujer = random.nextBoolean();
+            grupo.agregarPersona(new Persona(estadoCivil, sueldo, mujer));
+        }
 
         // Se imprimen los resultados de los cálculos
         System.out.println("Número de mujeres: " + grupo.numeroMujeres());
@@ -110,40 +94,31 @@ public class GrupoPersonas {
         System.out.println("¿El sueldo medio de los hombres solteros es mayor que el de los hombres casados?: " + grupo.sueldoMedioHombresSolterosMayor());
     }
 
-    /**
-     * Clase que representa a una persona.
-     */
+    // Clase que representa a la persona
     static class Persona {
 
         private char estadoCivil; // Estado civil: c=casada, s=soltera, v=viuda
         private int sueldo; // Sueldo de la persona
         private boolean mujer; // Indica si la persona es mujer o no
 
+        // Constructor de la clase Persona
         public Persona(char estadoCivil, int sueldo, boolean mujer) {
             this.estadoCivil = estadoCivil;
             this.sueldo = sueldo;
             this.mujer = mujer;
         }
 
-        /**
-         * Método getter para obtener el estado civil de la persona.
-         *
-         * @return Estado civil.
-         */
+        // Método getter para el estado civil de la persona
         public char getEstadoCivil() {
             return estadoCivil;
         }
 
-        /*
-         * Método getter para obtener el sueldo de la 
-         */
+        // Método getter para el sueldo de la persona
         public int getSueldo() {
             return sueldo;
         }
 
-        /**
-         * Método getter para determinar si la persona es mujer. Devuelve verdadero si es verdad, y falso si no es cierto, obviamente jaja.
-         */
+        // Método getter para determinar si es mujer
         public boolean isMujer() {
             return mujer;
         }
